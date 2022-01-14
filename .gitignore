@@ -3,3 +3,4 @@ action.sh
 compile_commands.json
 main
 /.clangd
+*.so

@@ -10,5 +10,13 @@ find_package(Eigen3 REQUIRED)
 ADD_DEFINITIONS(-DEIGEN_NO_DEBUG)
 include_directories(${EIGEN3_INCLUDE_DIR})
 
+add_library(raytest STATIC raytest.cpp)
+target_link_libraries(raytest stl_parser)
+
 add_executable(main main.cpp)
-target_link_libraries(main stl_parser)
+target_link_libraries(main raytest)
+
+set(LIBRARY_NAME raytestpy)
+add_subdirectory(pybind11)
+pybind11_add_module(raytestpy wrapper.cpp)
+target_link_libraries(raytestpy PRIVATE raytest)
