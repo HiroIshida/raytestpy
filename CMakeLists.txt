@@ -20,3 +20,12 @@ set(LIBRARY_NAME raytestpy)
 add_subdirectory(pybind11)
 pybind11_add_module(raytestpy wrapper.cpp)
 target_link_libraries(raytestpy PRIVATE raytest)
+
+set(CMD_SITE_PKG "import site; import sys;sys.stdout.write(site.getusersitepackages())")
+
+execute_process(
+    COMMAND ${PYTHON_EXECUTABLE} -c "${CMD_SITE_PKG}"
+    OUTPUT_VARIABLE PYTHON_SITE_PACKAGES_INSTALL_DIR
+    )
+install(TARGETS raytestpy DESTINATION ${PYTHON_SITE_PACKAGES_INSTALL_DIR})
+message("destination site-packages:" ${PYTHON_SITE_PACKAGES_INSTALL_DIR})
