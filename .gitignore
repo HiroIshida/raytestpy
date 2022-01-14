@@ -1,0 +1,5 @@
+action.sh
+/build
+compile_commands.json
+main
+/.clangd
