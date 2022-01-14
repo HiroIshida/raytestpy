@@ -6,5 +6,5 @@
 
 PYBIND11_MODULE(raytestpy, m) {
   m.doc() = "raytest example";
-  m.def("ray_test_pose", &raytest::ray_test_expose, "ray test against a mesh");
+  m.def("raytest", &raytest::ray_test_expose, "ray test against a mesh");
 }
